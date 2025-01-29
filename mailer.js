@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 
 
 export const sendVerificationEmail = async (email, token) => {
-  const verificationLink = ` http://localhost:5173/verify/?token=${token}`;
+  const verificationLink = ` https://email-verification-frontend.onrender.com/verify/?token=${token}`;
   
 const transporter = nodemailer.createTransport({
   service: "gmail",

@@ -1,10 +1,9 @@
 import express, { request, response } from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
-import userRoute from './routes/userRoute.js'
+import userRoute from "./routes/userRoute.js";
 import booksRoute from "./routes/booksRoute.js";
 import cors from "cors";
-
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -15,10 +14,7 @@ app.use(express.json());
 //Allow All Origins qith difault of cors(*)
 app.use(cors());
 let corsOptions = {
-  origin: [
-    "https://email-verification-frontend.onrender.com",
-    "http://localhost:5173",
-  ],
+  origin: ["https://hawi-frontend-x7cd.vercel.app", "http://localhost:5173"],
 };
 app.use(cors(corsOptions));
 app.get("/", (request, response) => {
@@ -27,7 +23,6 @@ app.get("/", (request, response) => {
 });
 app.use("/books", booksRoute);
 app.use("/user", userRoute);
-
 
 mongoose
   .connect(mongoDBURL)
